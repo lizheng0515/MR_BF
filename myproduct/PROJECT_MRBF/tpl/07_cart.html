@@ -1,0 +1,36 @@
+<div class="wrapper">
+    <div class="cart">
+        <div class="list light-bg">
+            <div class="item item-divider light-bg">
+				购物车
+                <a class="fr fs_sx" ng-click="cart_edit()">{{edit_txt}}</a>
+            </div>
+            <div class="item item-thumbnail-left item-checkbox" ng-repeat="tmp in cartList">
+                <img ng-src="img/{{tmp.cartList[0]['pic']}}" ng-click="jump('detail',{id:tmp.productId})">
+                <p>
+                    <label class="checkbox cart_checkbox">
+                        <input type="checkbox" ng-model="tmp.onchecked" ng-change="dish_choose_one(tmp.did,tmp.onchecked)">
+                    </label>
+                </p>
+                <div class="cart_info_left">
+                    <h2 class="product_name" ng-if="onEdit==false">{{tmp.cartList[0]['pname']}}</h2>
+                    <p class="count_ctrl" ng-if="onEdit==true">
+                        <span class="minus icon ion-minus" ng-click="count_minus(tmp.did)">
+                        </span><input type="text" ng-model="tmp.scount" ng-change="count_change(tmp.scount)"/>
+                        <span class="plus icon ion-plus" ng-click="count_plus(tmp.did)"></span>
+                    </p>
+                </div>
+                <span class="price">
+                    {{tmp.cartList[0]['price']}}
+                </span>
+
+                <div class="fr">
+                    <span class="count" ng-if="onEdit==false">×{{tmp.scount}}</span>
+                    <p class="cart_product_del assertive-bg" ng-if="onEdit==true" ng-click="cart_del(tmp.did)">
+                        删除
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

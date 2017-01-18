@@ -1,0 +1,23 @@
+<div class="wrapper">
+    <div class="order_list">
+        <div class="list card" ng-repeat="tmp in orderList">
+            <a class="item">
+                <div class="fl">
+                    <h2>订单编号：{{tmp.order_time}}</h2>
+                    <p>{{tmp.order_time|date : 'yyyy-MM-dd hh:mm:ss'}}</p>
+                </div>
+                <span class="price fr">{{tmp.status==1?'等待付款':tmp.status==2?'派送中':tmp.status==3?'订单完成':'订单取消'}}</span>
+            </a>
+            <a class="item item-thumbnail-left" href="#">
+                <img ng-src="img/{{tmp.cartList[0].pic}}">
+                <h2>{{tmp.cartList.length==1?tmp.cartList[0].pname:tmp.cartList[0].pname+'...共'+tmp.cartList.length+'件商品'}}</h2>
+                <p>{{tmp.msg}}</p>
+            </a>
+            <a class="item">
+                <p class="fr">
+                    合计：<span class="price">{{tmp.totalPrice}}</span>
+                </p>
+            </a>
+        </div>
+    </div>
+</div>

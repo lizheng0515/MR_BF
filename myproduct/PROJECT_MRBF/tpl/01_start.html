@@ -1,0 +1,24 @@
+<div class="wrapper start">
+
+    <!--寿司-->
+    <div class="start_box" ng-repeat="tmp in dishList">
+        <div class="row">
+            <div class="col">
+                <p class="box_lg">
+                    <img ng-src="img/{{tmp.pic}}"/>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-50">
+                <p class="box_sm box_sm_left">
+                    <a ng-click="jump('main',{id:tmp['classList'][0].lid})"><img ng-src="img/{{tmp['classList'][0].pic}}" alt=""/></a>
+                </p>
+            </div>
+            <div class="col col-50">
+                <p class="box_sm">
+                    <a ng-click="jump('main',{id:tmp['classList'][1].lid})"><img ng-src="img/{{tmp['classList'][1].pic}}" alt=""/></a>
+                </p>
+            </div>
+        </div>
+    </div>

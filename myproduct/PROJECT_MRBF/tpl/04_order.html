@@ -1,0 +1,96 @@
+<div class="wrapper">
+    <div class="order">
+        <div class="list">
+            <a class="item item_addr">
+                <div ng-if="!hasInfo">
+                    <button class="btn_addr button button-positive icon ion-plus" ng-click="openModal()">
+
+                    </button>
+                    <span class="tuning">新增收货地址</span>
+                    <i class="icon-right icon ion-chevron-right tuning fr"></i>
+                </div>
+                <div ng-if="hasInfo">
+                    <h3>收货人：{{watchInfo.user_name}}</h3>
+                    <p>收货地址：{{watchInfo.user_addr}}，{{watchInfo.user_phone}}</p>
+                </div>
+            </a>
+
+            <!--订单菜品列表-->
+            <div class="cart">
+                <div class="list">
+                    <span></span>
+                    <a class="item item-thumbnail-left" ng-repeat="dish in order_dish">
+                        <img ng-src="img/{{dish.pic}}">
+                        <h2>{{dish.pname}}</h2>
+                        <div class="item_con">
+                        <span class="price">
+                        {{dish.price| currency:'￥'}}
+                        </span>
+                        <span class="count fr">×{{dish.scount}}</span>
+                        </div>
+
+                    </a>
+                </div>
+            </div>
+
+
+            <a class="item list_item">
+                <h2 class="item_title">配送方式</h2>
+                <div class="item_con">
+                    <p class="price">￥0.00</p>
+                    <p>快递发货</p>
+                </div>
+            </a>
+            <label class="item item-input list_item">
+                <span class="item_title item_input_title">买家留言</span>
+                <input type="text" placeholder="点击给商家留言,30字以内" ng-model="watchInfo.user_msg"
+                       form="user_info" id="user_msg" maxlength="30">
+            </label>
+            <a class="item list_item">
+                <h2 class="item_title">
+                    合计
+                </h2>
+                <span class="price item_con">
+                    {{totalPrice|currency:'￥'}}
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--添加地址卡-->
+<script id="add_addr_modal.html" type="text/ng-template">
+    <ion-modal-view class="order_card_box">
+        <ion-content>
+
+            <div class="order_card">
+                <form id="user_info"></form>
+                <div class="list">
+                    <p class="item item-divider stable-bg">
+                        添加新地址
+                        <span class="close" ng-click="closeModal()">×</span>
+                    </p>
+                    <label class="item item-input">
+                        <span class="input-label">收件人{{user_name}}</span>
+                        <input type="text" placeholder="名字" ng-model="watchInfo.user_name"
+                               form="user_info" id="userName" required maxlength="16">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">联系电话</span>
+                        <input type="text" placeholder="请填写11位的手机号码" ng-model="watchInfo.user_phone"
+                               form="user_info" id="userPhone" required pattern="1[3578]\d{9}">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">详细地址</span>
+                        <input type="text" placeholder="请填写正确地址" ng-model="watchInfo.user_addr"
+                               form="user_info" id="userAddr" required maxlength="128">
+                    </label>
+                </div>
+                    <button class="button button-block button-balanced order_sumit_bar"
+                            ng-click="saveInfo()">保存</button>
+
+            </div>
+
+        </ion-content>
+    </ion-modal-view>
+</script>

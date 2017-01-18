@@ -1,0 +1,26 @@
+<div class="wrapper">
+    <div class="main_menu">
+        <div class="row row-wrap">
+            <div class="col col-50" ng-repeat="tmp in dish">
+                <div class="card">
+                    <div class="item-body">
+                        <div class="menu_pic">
+                            <a ng-click="jump('detail',{id:tmp.pid})">
+                                <img class="full-image" ng-src="img/{{tmp.pic}}" alt=""/>
+                            </a>
+                            <p>{{tmp.pname}}</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <span class="price">{{tmp.price| currency:'￥'}}</span>
+                        <a ng-click="addToCart({id:tmp.pid})" class="fr">
+                            <i class="icon ion-ios-cart"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

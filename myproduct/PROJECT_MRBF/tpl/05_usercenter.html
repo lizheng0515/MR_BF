@@ -1,0 +1,72 @@
+<div class="wrapper">
+    <div class="usercenter">
+        <div class="top_banner">
+            <img src="img/usercenter_banner.jpg"/>
+        </div>
+
+        <div class="order_list">
+            <div class="button-bar bar-light">
+                <p class="button" ng-click="jump('orderlist',{status:1})">
+                    <i class="icon ion-wifi">
+                        <span class="badge badge-assertive">{{orderStatus[1][0]}}</span>
+                    </i>
+                    <span>等代付款</span>
+
+                </p>
+                <p class="button" ng-click="jump('orderlist',{status:2})">
+                    <i class="icon ion-shuffle">
+                        <span class="badge badge-assertive">{{orderStatus[2][0]}}</span>
+                    </i>
+                    <span>派货中</span>
+
+                </p>
+                <p class="button" ng-click="jump('orderlist',{status:3})">
+                    <i class="icon ion-trophy">
+                        <span class="badge badge-assertive">{{orderStatus[3][0]}}</span>
+                    </i>
+                    <span>订单完成</span>
+
+                </p>
+                <p class="button" ng-click="jump('orderlist',{status:4})">
+                    <i class="icon ion-social-usd">
+                        <span class="badge badge-assertive">{{orderStatus[4][0]}}</span>
+                    </i>
+                    <span>订单取消</span>
+
+                </p>
+            </div>
+            <!-- 测试-->
+            <div>
+                <p ng-repeat="tmp in orderStatusDetail">
+                    <span>{{tmp.phone}}</span>
+                    <span>{{tmp.addr}}</span>
+                    <span>{{tmp.oid}}</span>
+                </p>
+            </div>
+            <div class="order_total">
+                <p class="list">
+                    <a class="item item-icon-left item-icon-right" ng-click="jump('orderlist',{status:5})">
+                        <i class="icon ion-android-list"></i>
+                        全部订单
+                        <i class="icon-right icon ion-chevron-right"> </i>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <!--个人信息-->
+        <div class="user_info">
+            <p class="list">
+                <a class="item item-icon-left item-icon-right">
+                    <i class="icon ion-android-phone-portrait"></i>
+                    修改手机号
+                    <span class="phone_num">183*****2522</span>
+                    <i class="icon-right icon ion-chevron-right"> </i>
+                </a>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<!--<div id="footer" ng-include="'tpl/include/footer.html'"></div>-->

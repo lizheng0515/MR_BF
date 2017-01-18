@@ -1,0 +1,86 @@
+<div class="wrapper">
+    <div class="detail_menu">
+        <div class="detail_abs">
+            <div class="card">
+                <div class="item item-image">
+                    <img ng-src="img/{{dishDetail.pic}}"/>
+                </div>
+                <div class="item">
+                    <h3 class="title">{{dishDetail.pname}}</h3>
+                    <span class="price">{{dishDetail.price| currency:'￥'}}</span>
+                </div>
+                <div class="item tabs">
+                    <span class="tab-item">运费：免运费</span>
+                    <span class="tab-item">剩余：{{dishDetail.ocount}}</span>
+                    <span class="tab-item">销量：{{dishDetail.soldcount}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail_order">
+            <p class="order_info" ng-click="openModal()">
+                已选：固定搭配如图
+                <i class="icon ion-chevron-right fr"></i>
+            </p>
+        </div>
+
+        <div class="detail_content">
+            <div class="card">
+                <div class="item item-divider">
+                    <h3 class="title">
+                        商品详情
+                    </h3>
+                </div>
+                <div class="item item-body item-image">
+                    <img ng-src="img/{{dishDetail.pic_intro}}" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--产品下单卡-->
+<script id="order_card_modal.html" type="text/ng-template">
+    <ion-modal-view class="order_card_box">
+        <ion-content>
+
+            <div class="order_card">
+
+                <div class="list">
+                    <p class="item item-divider light-bg">
+
+                        <span class="close" ng-click="closeModal()">×</span>
+                    </p>
+                    <div class="item item-thumbnail-left product_info">
+                        <img ng-src="img/{{dishDetail.pic}}"/>
+                        <h2>{{dishDetail.pname}}</h2>
+                        <span class="price">
+                            {{dishDetail.price| currency:'￥'}}
+                        </span>
+                    </div>
+
+                    <div class="item">
+                        <div class="count_show">
+                            <h2>购买数量</h2>
+                            <p>剩余{{dishDetail.ocount}}件</p>
+                        </div>
+                        <p class="count_ctrl fr">
+                            <span class="minus icon ion-minus stable-bg"
+                                  ng-click="order_minus()">
+                            </span>
+                            <input type="number" ng-model="order_dish_count"/>
+                            <span class="plus icon ion-plus" ng-click="order_plus()"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="button-bar order_submit_bar">
+                    <button class="button button-energized order_submit"
+                            ng-click="addToCart({id:dishDetail.pid});closeModal()">加入购物车</button>
+                    <button class="button button-assertive order_submit"
+                            ng-click="orderJump(order_dish_data);closeModal()">立即购买</button>
+                </div>
+            </div>
+
+        </ion-content>
+    </ion-modal-view>
+</script>

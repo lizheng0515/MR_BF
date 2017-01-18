@@ -1,0 +1,63 @@
+<!--默认底部-->
+<ion-tabs class="tabs-dark" ng-if="routeUrl!=='detail'||routeUrl!=='order'">
+    <ion-tab icon="ion-home" ng-click="jump('start')">
+
+    </ion-tab>
+    <ion-tab icon="ion-ios-cart" ng-click="jump('cart')">
+
+    </ion-tab>
+    <ion-tab icon="ion-person" ng-click="jump('usercenter')">
+
+    </ion-tab>
+</ion-tabs>
+
+<!--detail底部-->
+<div ng-if="routeUrl=='detail'">
+    <ion-tabs class="tabs-light" >
+        <div class="button-bar">
+            <p class="button cart_btn" ng-click="jump('usercenter')">
+                <i class="icon ion-person"></i>
+            </p>
+            <p class="button cart_btn" ng-click="jump('cart')">
+                <i class="icon ion-ios-cart"></i>
+            </p>
+            <p class="button order_btn energized-bg" ng-click="openModal()">
+                加入购物车
+            </p>
+            <p class="button order_btn assertive-bg" ng-click="openModal()">
+                立即购买
+            </p>
+        </div>
+    </ion-tabs>
+</div>
+
+<!--cart底部-->
+<ion-tabs class="tabs-light" ng-if="routeUrl=='cart'">
+    <div class="button-bar">
+        <p>
+            <label class="checkbox fl">
+                <input type="checkbox" ng-model="watch.allChecked" ng-change="dish_choose(watch.allChecked)">
+            </label>
+            全选
+        </p>
+        <p class="total_price">合计：<span class="price">{{cartTotalPrice|currency:'￥'}}</span></p>
+        <p class="button order_btn "
+           ng-class="{'button-assertive':has_choose,'button-stable':!has_choose}"
+           ng-click="jumpToOrder()">
+            结算
+        </p>
+    </div>
+</ion-tabs>
+
+<!--order底部-->
+<ion-tabs class="tabs-light" ng-if="routeUrl=='order'">
+    <div class="button-bar">
+        <p class="total_price">合计：<span class="price">{{totalPrice|currency:'￥'}}</span></p>
+        <p id="order_submit" class="button order_btn"
+           ng-class="{'button-assertive':valid_order,'button-stable':!valid_order}"
+           ng-click="submit_order()">
+            提交订单
+        </p>
+    </div>
+</ion-tabs>
+
