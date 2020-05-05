@@ -15,6 +15,5 @@
 - 载入sql文件夹的sql部分
 - 项目根目录装载npm install
 - cd app进入app目录
-- node app.js启动服务器或者grunt直接进入配置好nodemon和watch的开发环境
 - 浏览器输入localhost:9000进入
 
